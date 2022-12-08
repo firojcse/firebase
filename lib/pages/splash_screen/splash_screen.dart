@@ -2,7 +2,8 @@ import 'package:firojfirebase/pages/splash_screen/splash_servicess.dart';
 import 'package:flutter/material.dart';
 
 
-class SplashScreen extends StatefulWidget {
+class
+SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -15,11 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-
     super.initState();
     splashServices.isLogin(context);
-
-
 
   }
   @override

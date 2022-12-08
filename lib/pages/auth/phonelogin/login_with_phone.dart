@@ -29,6 +29,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             child: TextFormField(
               key: formkey,
               controller: phoneNumberController,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 hintText:"+880 1725 171 605"
 
@@ -36,12 +37,22 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             ),
           ),
           SizedBox(height: 50,),
-          RoundButton(titele: "Login", onTap: (){
+          RoundButton(titele: "Login",loading: loading, onTap: (){
+            setState(() {
+              loading=true;
+            });
             auth.verifyPhoneNumber(
               phoneNumber: phoneNumberController.text.toString(),
-                verificationCompleted: (_){},
+                verificationCompleted: (_){
+                  setState(() {
+                    loading=false;
+                  });
+                },
                 verificationFailed: (e){
                 Utils().ToeastMassege(e.toString());
+                setState(() {
+                  loading=false;
+                });
 
                 },
                 codeSent: (String verificationId, int? token){
